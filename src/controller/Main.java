@@ -1,7 +1,6 @@
 package controller;
 
-import controller.Sorting.Algorithm;
-import controller.Sorting.Setup;
+import controller.Sorting.Magic;
 import model.Data;
 import model.Retreivable;
 import unit.*;
@@ -16,8 +15,8 @@ public class Main {
 
     private Retreivable data;
     private Window window;
-    private List<Speed> speeds;
-    private List<Resolution> resolutions;
+    private List<Setting> speeds;
+    private List<Setting> resolutions;
     private Theme theme;
 
     private void start() {
@@ -40,7 +39,7 @@ public class Main {
                 new Resolution("High", 128),
                 new Resolution("Ultra", 256)
         );
-        theme = new Theme(Color.YELLOW, Color.DARK_GRAY, new Color(50, 50, 50), Color.GREEN, Color.WHITE);
+        theme = new Theme(new Color(220, 220, 0), Color.DARK_GRAY, new Color(50, 50, 50), Color.GREEN, Color.WHITE);
     }
 
     private void loadData() {
@@ -52,10 +51,14 @@ public class Main {
         window = new Gui(speeds, resolutions, theme);
         window.setShuffleListener(e -> window.updateBars(data.shuffleValues()));
         window.updateBars(data.getValues());
+        window.setResolutionListener(e -> {
+            data.loadValues(window.getResolution());
+            window.updateBars(data.getValues());
+        });
     }
 
     private void loadAlgorithms() {
-        window.setAlgorithms(new Setup(window, data).loadAlgorithms());
+        window.setAlgorithms(new Magic(window, data).loadAlgorithms());
     }
 
     public static void main(String[] args) {

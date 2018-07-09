@@ -3,7 +3,7 @@ package view.Swing;
 import javax.swing.*;
 import java.awt.*;
 
-public final class Bar extends AbstractPanel {
+final class Bar extends AbstractPanel {
 
     private static int increment;
     private static int scanningDuration;
@@ -18,24 +18,22 @@ public final class Bar extends AbstractPanel {
         add(stick);
     }
 
-    public void setValue(int value) {
+    void setValue(int value) {
         setBorder(BorderFactory.createEmptyBorder(512 - (increment * (value + 1)), 0, 0, 0));
     }
 
-    public static void setResolution(int resolution) {
+    static void setResolution(int resolution) {
         increment = 512 / resolution;
     }
 
-    public static void setScanningDuration(int value) {
+    static void setScanningDuration(int value) {
         scanningDuration = value;
     }
 
-    public void scan() {
+    void scan() {
         stick.setBackground(theme.getScanningColor());
-        repaint();
         rest();
         stick.setBackground(theme.getActiveColor());
-        repaint();
     }
 
     private void rest() {

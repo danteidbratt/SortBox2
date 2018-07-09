@@ -7,7 +7,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class SortingPanel extends AbstractPanel {
+final class SortingPanel extends AbstractPanel {
 
     SortingPanel(List<Algorithm> sortingAlgorithms) {
         List<SortingButton> sortingButtons = new ArrayList<>();
@@ -15,7 +15,7 @@ class SortingPanel extends AbstractPanel {
             sortingButtons.add(new SortingButton(s));
         }
         setLayout(new GridLayout(sortingButtons.size(), 1));
-        setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));
         setBackground(theme.getBackgroundColor());
         for (SortingButton s : sortingButtons) {
             add(s);

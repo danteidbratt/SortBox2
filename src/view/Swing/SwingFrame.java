@@ -2,7 +2,6 @@ package view.Swing;
 
 import controller.Sorting.Algorithm;
 import unit.*;
-import view.AbstractFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,28 +11,37 @@ import java.util.List;
 import static java.awt.BorderLayout.*;
 import static javax.swing.JFrame.*;
 
-public class SwingFrame extends AbstractFrame {
+public final class SwingFrame implements view.Window {
 
     private JFrame frame;
     private JPanel mainPanel;
     private BarPanel barPanel;
     private MenuPanel menuPanel;
+    private SettingsPanel settingsPanel;
 
-    public SwingFrame(List<Speed> speeds, List<Resolution> resolutions, Theme theme) {
-        super(speeds, resolutions);
+    public SwingFrame(List<Setting> speeds, List<Setting> resolutions, Theme theme) {
         setTheme(theme);
         setSpeed(speeds.get(0));
         frame = new JFrame();
+        frame.setTitle("SortBox");
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         frame.add(mainPanel);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        LogoPanel logoPanel = new LogoPanel();
+        mainPanel.add(logoPanel, NORTH);
 
         barPanel = new BarPanel();
         mainPanel.add(barPanel, CENTER);
 
         menuPanel = new MenuPanel();
         mainPanel.add(menuPanel, EAST);
+
+        settingsPanel = new SettingsPanel(resolutions, speeds, e -> Bar.setScanningDuration(settingsPanel.getSpeed()));
+        mainPanel.add(settingsPanel, SOUTH);
         frame.pack();
     }
 
@@ -41,7 +49,7 @@ public class SwingFrame extends AbstractFrame {
         AbstractPanel.setTheme(theme);
     }
 
-    private void setSpeed(Speed speed) {
+    private void setSpeed(Setting speed) {
         Bar.setScanningDuration(speed.getValue());
     }
 
@@ -51,13 +59,13 @@ public class SwingFrame extends AbstractFrame {
     }
 
     @Override
-    public Resolution getResolution() {
-        return null;
+    public int getResolution() {
+        return settingsPanel.getResolution();
     }
 
     @Override
-    public void setResolutionListener(ActionListener actionListener) {
-
+    public void setResolutionListener(ActionListener resolutionListener) {
+        settingsPanel.setResolutionListener(resolutionListener);
     }
 
     @Override

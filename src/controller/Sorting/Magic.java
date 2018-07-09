@@ -6,16 +6,18 @@ import view.Sortable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Setup {
+public final class Magic {
 
     private Sortable sortable;
     private final Retreivable data;
-    private final List<Algorithm> sortingAlgorithms;
 
-    public Setup(Sortable sortable, Retreivable data) {
+    public Magic(Sortable sortable, Retreivable data) {
         this.sortable = sortable;
         this.data = data;
-        sortingAlgorithms = new ArrayList<>();
+    }
+
+    public List<Algorithm> loadAlgorithms() {
+        List<Algorithm> sortingAlgorithms = new ArrayList<>();
         sortingAlgorithms.add(new Algorithm("Insertion", () -> {
             for (int i = 0; i < data.getSize() - 1; i++) {
                 for (int j = i; j < data.getSize(); j++) {
@@ -176,6 +178,7 @@ public class Setup {
                 return 0;
             }
         }));
+        return sortingAlgorithms;
     }
 
     private synchronized void swap(int first, int second) {
@@ -186,10 +189,6 @@ public class Setup {
     private int scan(int index) {
         sortable.scan(index);
         return data.getValues()[index];
-    }
-
-    public List<Algorithm> getSortingAlgorithms() {
-        return sortingAlgorithms;
     }
 
 }

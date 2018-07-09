@@ -7,11 +7,11 @@ import view.Swing.SwingFrame;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class Gui implements Window {
+public final class Gui implements Window {
 
-    private AbstractFrame frame;
+    private Window frame;
 
-    public Gui(List<Speed> speeds, List<Resolution> resolutions, Theme theme) {
+    public Gui(List<Setting> speeds, List<Setting> resolutions, Theme theme) {
         frame = new SwingFrame(speeds, resolutions, theme);
     }
 
@@ -21,7 +21,7 @@ public class Gui implements Window {
     }
 
     @Override
-    public Resolution getResolution() {
+    public int getResolution() {
         return frame.getResolution();
     }
 

@@ -2,7 +2,7 @@ package view.Swing;
 
 import java.awt.*;
 
-public class BarPanel extends AbstractPanel {
+final class BarPanel extends AbstractPanel {
 
     private Bar[] bars;
 
@@ -24,13 +24,13 @@ public class BarPanel extends AbstractPanel {
         revalidate();
     }
 
-    public void swap(int[] values, int first, int second) {
+    void swap(int[] values, int first, int second) {
         bars[first].setValue(values[first]);
         bars[second].setValue(values[second]);
         revalidate();
     }
 
-    public void scan(int index) {
+    void scan(int index) {
         bars[index].scan();
     }
 

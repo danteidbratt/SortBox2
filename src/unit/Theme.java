@@ -8,12 +8,14 @@ public class Theme {
     private final Color inactiveColor;
     private final Color backgroundColor;
     private final Color scanningColor;
+    private final Color logoColor;
 
-    public Theme(Color activeColor, Color inactiveColor, Color backgroundColor, Color scanningColor) {
+    public Theme(Color activeColor, Color inactiveColor, Color backgroundColor, Color scanningColor, Color logoColor) {
         this.activeColor = activeColor;
         this.inactiveColor = inactiveColor;
         this.backgroundColor = backgroundColor;
         this.scanningColor = scanningColor;
+        this.logoColor = logoColor;
     }
 
     public Color getActiveColor() {
@@ -32,4 +34,7 @@ public class Theme {
         return scanningColor;
     }
 
+    public Color getLogoColor() {
+        return logoColor;
+    }
 }
