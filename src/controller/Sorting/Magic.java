@@ -136,9 +136,6 @@ public final class Magic {
                         i++;
                     }
                 }
-                if (layer == 0 && pivotIndex == last) {
-                    return;
-                }
                 layer++;
                 quickBox(first, pivotIndex - 1, layer);
                 quickBox(pivotIndex + 1, last, layer);
@@ -149,12 +146,12 @@ public final class Magic {
 
             @Override
             public void run() {
-                quickBox(0, data.getSize() - 1, 0);
+                quickBox(0, data.getSize() - 1);
             }
 
-            private int quickBox(int first, int last, int layer) {
+            private void quickBox(int first, int last) {
                 if (last - first < 1) {
-                    return 0;
+                    return;
                 }
                 int pivotIndex = last;
                 int pivotValue = scan(pivotIndex);
@@ -167,15 +164,9 @@ public final class Magic {
                         i++;
                     }
                 }
-                if (layer == 0 && pivotIndex == last) {
-                    return 0;
-                }
-                layer++;
                 int finalPivot = pivotIndex;
-                int finalLayer = layer;
-                new Thread(() -> quickBox(finalPivot + 1, last, finalLayer)).start();
-                new Thread(() -> quickBox(first, finalPivot - 1, finalLayer)).start();
-                return 0;
+                new Thread(() -> quickBox(finalPivot + 1, last)).start();
+                new Thread(() -> quickBox(first, finalPivot - 1)).start();
             }
         }));
         return sortingAlgorithms;
