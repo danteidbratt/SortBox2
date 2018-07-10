@@ -1,6 +1,5 @@
 package view.Swing;
 
-import javax.swing.*;
 import java.awt.*;
 
 final class BarPanel extends AbstractPanel {

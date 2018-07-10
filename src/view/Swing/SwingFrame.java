@@ -1,7 +1,8 @@
 package view.Swing;
 
 import controller.Sorting.Algorithm;
-import unit.*;
+import unit.Setting;
+import unit.Theme;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import static java.awt.BorderLayout.*;
-import static javax.swing.JFrame.*;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public final class SwingFrame implements view.Window {
 
