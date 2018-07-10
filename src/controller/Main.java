@@ -11,6 +11,8 @@ import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.awt.Font.BOLD;
+
 public class Main {
 
     private Retreivable data;
@@ -39,7 +41,12 @@ public class Main {
                 new Resolution("High", 128),
                 new Resolution("Ultra", 256)
         );
-        theme = new Theme(new Color(220, 220, 0), Color.DARK_GRAY, new Color(50, 50, 50), Color.GREEN, Color.WHITE);
+        theme = new Theme(new Color(220, 220, 0),
+                Color.DARK_GRAY,
+                new Color(50, 50, 50),
+                Color.GREEN,
+                Color.WHITE,
+                new Font("SansSerif", BOLD, 25));
     }
 
     private void loadData() {

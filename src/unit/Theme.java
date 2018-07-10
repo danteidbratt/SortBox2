@@ -9,13 +9,15 @@ public class Theme {
     private final Color backgroundColor;
     private final Color scanningColor;
     private final Color logoColor;
+    private final Font buttonFont;
 
-    public Theme(Color activeColor, Color inactiveColor, Color backgroundColor, Color scanningColor, Color logoColor) {
+    public Theme(Color activeColor, Color inactiveColor, Color backgroundColor, Color scanningColor, Color logoColor, Font buttonFont) {
         this.activeColor = activeColor;
         this.inactiveColor = inactiveColor;
         this.backgroundColor = backgroundColor;
         this.scanningColor = scanningColor;
         this.logoColor = logoColor;
+        this.buttonFont = buttonFont;
     }
 
     public Color getActiveColor() {
@@ -36,5 +38,9 @@ public class Theme {
 
     public Color getLogoColor() {
         return logoColor;
+    }
+
+    public Font getButtonFont() {
+        return buttonFont;
     }
 }

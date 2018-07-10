@@ -13,7 +13,7 @@ final class LogoPanel extends AbstractPanel {
         JLabel logo = new JLabel("SortBox");
         logo.setFont(new Font("SansSerif", Font.PLAIN, 50));
         logo.setForeground(theme.getLogoColor());
-        logo.setHorizontalAlignment(SwingConstants.CENTER);
+        logo.setHorizontalAlignment(SwingConstants.LEFT);
         add(logo);
     }
 

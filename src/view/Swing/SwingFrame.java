@@ -6,6 +6,7 @@ import unit.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.util.List;
 
 import static java.awt.BorderLayout.*;
@@ -16,19 +17,21 @@ public final class SwingFrame implements view.Window {
     private JFrame frame;
     private JPanel mainPanel;
     private BarPanel barPanel;
-    private MenuPanel menuPanel;
-    private SettingsPanel settingsPanel;
+    private Dashboard dashboard;
 
     public SwingFrame(List<Setting> speeds, List<Setting> resolutions, Theme theme) {
         setTheme(theme);
         setSpeed(speeds.get(0));
         frame = new JFrame();
         frame.setTitle("SortBox");
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
+        mainPanel.setBackground(theme.getBackgroundColor());
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 20));
         frame.add(mainPanel);
 
         LogoPanel logoPanel = new LogoPanel();
@@ -37,11 +40,8 @@ public final class SwingFrame implements view.Window {
         barPanel = new BarPanel();
         mainPanel.add(barPanel, CENTER);
 
-        menuPanel = new MenuPanel();
-        mainPanel.add(menuPanel, EAST);
-
-        settingsPanel = new SettingsPanel(resolutions, speeds, e -> Bar.setScanningDuration(settingsPanel.getSpeed()));
-        mainPanel.add(settingsPanel, SOUTH);
+        dashboard = new Dashboard(resolutions, speeds, e -> Bar.setScanningDuration(dashboard.getSpeed()));
+        mainPanel.add(dashboard, SOUTH);
         frame.pack();
     }
 
@@ -60,17 +60,17 @@ public final class SwingFrame implements view.Window {
 
     @Override
     public int getResolution() {
-        return settingsPanel.getResolution();
+        return dashboard.getResolution();
     }
 
     @Override
     public void setResolutionListener(ActionListener resolutionListener) {
-        settingsPanel.setResolutionListener(resolutionListener);
+        dashboard.setResolutionListener(resolutionListener);
     }
 
     @Override
     public void setShuffleListener(ActionListener shuffleListener) {
-        menuPanel.setShuffleListener(shuffleListener);
+        dashboard.setShuffleListener(shuffleListener);
     }
 
     @Override
