@@ -11,4 +11,6 @@ public interface Retreivable {
     void swapValues(int first, int second);
 
     int getSize();
+
+    boolean isShuffled();
 }

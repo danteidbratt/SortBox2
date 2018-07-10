@@ -6,7 +6,6 @@ import unit.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 import java.util.List;
 
 import static java.awt.BorderLayout.*;

@@ -40,4 +40,14 @@ public final class Data implements Retreivable{
     public int getSize() {
         return values.length;
     }
+
+    @Override
+    public boolean isShuffled() {
+        for (int i = 0; i < values.length - 1; i++) {
+            if(values[i] > values[i + 1]) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

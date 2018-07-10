@@ -8,6 +8,7 @@ import java.util.List;
 
 public final class Magic {
 
+    private static int initialThreadCount;
     private Sortable sortable;
     private final Retreivable data;
 
@@ -27,6 +28,7 @@ public final class Magic {
                     }
                 }
             }
+            done();
         }));
 
         sortingAlgorithms.add(new Algorithm("Bubble", () -> {
@@ -46,6 +48,7 @@ public final class Magic {
                 }
                 round++;
             }
+            done();
         }));
 
         sortingAlgorithms.add(new Algorithm("Sliding", () -> {
@@ -65,6 +68,7 @@ public final class Magic {
                     }
                 }
             }
+            done();
         }));
 
         sortingAlgorithms.add(new Algorithm("Shaker", () -> {
@@ -112,41 +116,15 @@ public final class Magic {
                 }
                 bottomWall++;
             }
+            done();
         }));
 
         sortingAlgorithms.add(new Algorithm("Quick", new Runnable() {
 
             @Override
             public void run() {
-                quickBox(0, data.getSize() - 1, 0);
-            }
-
-            private void quickBox(int first, int last, int layer) {
-                if (last - first < 1) {
-                    return;
-                }
-                int pivotIndex = last;
-                int pivotValue = scan(pivotIndex);
-                for (int i = first; i < pivotIndex; ) {
-                    if (scan(i) > pivotValue) {
-                        swap(pivotIndex, i);
-                        swap(i, pivotIndex - 1);
-                        pivotIndex--;
-                    } else {
-                        i++;
-                    }
-                }
-                layer++;
-                quickBox(first, pivotIndex - 1, layer);
-                quickBox(pivotIndex + 1, last, layer);
-            }
-        }));
-
-        sortingAlgorithms.add(new Algorithm("MultiQuick", new Runnable() {
-
-            @Override
-            public void run() {
                 quickBox(0, data.getSize() - 1);
+                done();
             }
 
             private void quickBox(int first, int last) {
@@ -164,11 +142,49 @@ public final class Magic {
                         i++;
                     }
                 }
+                quickBox(first, pivotIndex - 1);
+                quickBox(pivotIndex + 1, last);
+            }
+        }));
+
+        sortingAlgorithms.add(new Algorithm("MultiQuick", new Runnable() {
+
+            @Override
+            public void run() {
+                initialThreadCount = Thread.activeCount();
+                quickBox(0, data.getSize() - 1);
+            }
+
+            private void quickBox(int first, int last) {
+                if (last - first < 1) {
+                    terminate();
+                    return;
+                }
+                int pivotIndex = last;
+                int pivotValue = scan(pivotIndex);
+                for (int i = first; i < pivotIndex; ) {
+                    if (scan(i) > pivotValue) {
+                        swap(pivotIndex, i);
+                        swap(i, pivotIndex - 1);
+                        pivotIndex--;
+                    } else {
+                        i++;
+                    }
+                }
                 int finalPivot = pivotIndex;
                 new Thread(() -> quickBox(finalPivot + 1, last)).start();
                 new Thread(() -> quickBox(first, finalPivot - 1)).start();
+                terminate();
             }
+
+            private synchronized void terminate() {
+                if(initialThreadCount == Thread.activeCount()) {
+                    done();
+                }
+            }
+
         }));
+
         return sortingAlgorithms;
     }
 
@@ -180,6 +196,10 @@ public final class Magic {
     private int scan(int index) {
         sortable.scan(index);
         return data.getValues()[index];
+    }
+
+    private void done() {
+        Algorithm.setBusy(false);
     }
 
 }

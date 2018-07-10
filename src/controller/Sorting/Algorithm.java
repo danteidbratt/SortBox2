@@ -1,15 +1,33 @@
 package controller.Sorting;
 
+import model.Retreivable;
+
 import java.awt.event.ActionListener;
 
-public class Algorithm {
+public final class Algorithm {
 
+    private static Retreivable data;
+    private static boolean busy;
     private final String identifier;
+    private final Runnable algorithm;
     private final ActionListener actionListener;
 
-    public Algorithm(String identifier, Runnable algorithm) {
+
+    Algorithm(String identifier, Runnable algorithm) {
         this.identifier = identifier;
-        actionListener = e -> new Thread(algorithm).start();
+        this.algorithm = algorithm;
+        actionListener = e -> activate();
+    }
+
+    private void activate() {
+        if(data.isShuffled() && !busy) {
+            busy = true;
+            new Thread(algorithm).start();
+        }
+    }
+
+    public static void setData(Retreivable data) {
+        Algorithm.data = data;
     }
 
     public String getIdentifier() {
@@ -18,6 +36,14 @@ public class Algorithm {
 
     public ActionListener getActionListener() {
         return actionListener;
+    }
+
+    static void setBusy(boolean busy) {
+        Algorithm.busy = busy;
+    }
+
+    public static boolean isBusy() {
+        return busy;
     }
 
 }
