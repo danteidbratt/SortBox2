@@ -8,7 +8,7 @@ import java.util.List;
 
 public final class Magic {
 
-    private static int initialThreadCount;
+    private int initialThreadCount;
     private Sortable sortable;
     private final Retreivable data;
 

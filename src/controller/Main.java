@@ -31,10 +31,9 @@ public class Main {
 
     private void loadSettings() {
         speeds = Arrays.asList(
-                new Speed("Low", 200),
-                new Speed("Mid", 50),
-                new Speed("High", 8),
-                new Speed("Extreme", 1),
+                new Speed("Low", 100),
+                new Speed("Mid", 10),
+                new Speed("High", 1),
                 new Speed("Unlimited", 0)
         );
         resolutions = Arrays.asList(
