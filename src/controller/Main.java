@@ -4,7 +4,10 @@ import controller.Sorting.Algorithm;
 import controller.Sorting.Magic;
 import model.Data;
 import model.Retreivable;
-import unit.*;
+import unit.Resolution;
+import unit.Setting;
+import unit.Speed;
+import unit.Theme;
 import view.Gui;
 import view.Window;
 

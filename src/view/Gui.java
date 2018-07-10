@@ -1,7 +1,8 @@
 package view;
 
 import controller.Sorting.Algorithm;
-import unit.*;
+import unit.Setting;
+import unit.Theme;
 import view.Swing.SwingFrame;
 
 import java.awt.event.ActionListener;
