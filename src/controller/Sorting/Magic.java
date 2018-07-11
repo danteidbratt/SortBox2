@@ -21,62 +21,44 @@ public final class Magic {
     public List<Algorithm> loadAlgorithms() {
         List<Algorithm> sortingAlgorithms = new ArrayList<>();
 
-        sortingAlgorithms.add(new Algorithm("Insertion", () -> {
+        sortingAlgorithms.add(new Algorithm("Sliding", () -> {
             start();
-            int current;
-            for (int i = 1; i < data.getSize(); i++) {
-                current = scan(i);
-                for (int j = i; j > 0; j--) {
-                    if (scan(j - 1) > current) {
-                        swap(j - 1, j);
-                    } else {
-                        break;
+            boolean messy = true;
+            boolean even = true;
+            while (messy) {
+                messy = false;
+                for (int i = even ? 0 : 1; i < data.getSize() - 1; i += 2) {
+                    if (scan(i) > scan(i + 1)) {
+                        swap(i, i + 1);
+                        messy = true;
                     }
                 }
+                even = !even;
             }
-            done();
+            finish();
         }));
 
         sortingAlgorithms.add(new Algorithm("Bubble", () -> {
             start();
-            boolean ordered = false;
+            boolean messy = true;
             int round = 0;
             int current;
-            while (!ordered) {
-                ordered = true;
+            int contender;
+            while (messy) {
+                messy = false;
                 current = scan(0);
                 for (int i = 0; i < data.getSize() - 1 - round; i++) {
-                    if (current > scan(i + 1)) {
+                    contender = scan(i + 1);
+                    if (current > contender) {
                         swap(i, i + 1);
-                        ordered = false;
+                        messy = true;
                     } else {
-                        current = scan(i + 1);
+                        current = contender;
                     }
                 }
                 round++;
             }
-            done();
-        }));
-
-        sortingAlgorithms.add(new Algorithm("Sliding", () -> {
-            start();
-            boolean ordered = false;
-            while (!ordered) {
-                ordered = true;
-                for (int i = 0; i < data.getSize() - 1; i += 2) {
-                    if (scan(i) > scan(i + 1)) {
-                        swap(i, i + 1);
-                        ordered = false;
-                    }
-                }
-                for (int i = 1; i < data.getSize() - 1; i += 2) {
-                    if (scan(i) > scan(i + 1)) {
-                        swap(i, i + 1);
-                        ordered = false;
-                    }
-                }
-            }
-            done();
+            finish();
         }));
 
         sortingAlgorithms.add(new Algorithm("Shaker", () -> {
@@ -125,39 +107,54 @@ public final class Magic {
                 }
                 bottomWall++;
             }
-            done();
+            finish();
         }));
 
-        sortingAlgorithms.add(new Algorithm("Shell", new Runnable() {
-            @Override
-            public void run() {
-                start();
-                Arrays.asList(5, 2, 1).forEach(this::generateIndexList);
-                done();
-            }
-
-            private void generateIndexList(int interval) {
-                int[] temp;
-                int tempLength;
-                for (int i = 0; i < interval; i++) {
-                    tempLength = ((data.getSize() - i) / interval);
-                    temp = new int[tempLength];
-                    for (int j = 0; j < tempLength; j++) {
-                        temp[j] = i + (interval * j);
-                    }
-                    if (temp.length > 1) {
-                        sortByIndexList(temp);
+        sortingAlgorithms.add(new Algorithm("Insertion", () -> {
+            start();
+            int current;
+            for (int i = 1; i < data.getSize(); i++) {
+                current = scan(i);
+                for (int j = i; j > 0; j--) {
+                    if (scan(j - 1) > current) {
+                        swap(j - 1, j);
+                    } else {
+                        break;
                     }
                 }
             }
+            finish();
+        }));
 
-            private void sortByIndexList(int[] temp) {
+        sortingAlgorithms.add(new Algorithm("Wave", new Runnable() {
+
+            @Override
+            public void run() {
+                start();
+                Arrays.asList(5, 2, 1).forEach(interval -> {
+                    int[] indexes;
+                    int tempLength;
+                    for (int i = 0; i < interval; i++) {
+                        tempLength = ((data.getSize() - i) / interval);
+                        indexes = new int[tempLength];
+                        for (int j = 0; j < tempLength; j++) {
+                            indexes[j] = i + (interval * j);
+                        }
+                        if (indexes.length > 1) {
+                            sortBy(indexes);
+                        }
+                    }
+                });
+                finish();
+            }
+
+            private void sortBy(int[] indexes) {
                 int current;
-                for (int i = 1; i < temp.length; i++) {
-                    current = scan(temp[i]);
+                for (int i = 1; i < indexes.length; i++) {
+                    current = scan(indexes[i]);
                     for (int j = i; j > 0; j--) {
-                        if (scan(temp[j - 1]) > current) {
-                            swap(temp[j - 1], temp[j]);
+                        if (scan(indexes[j - 1]) > current) {
+                            swap(indexes[j - 1], indexes[j]);
                         } else {
                             break;
                         }
@@ -166,13 +163,34 @@ public final class Magic {
             }
         }));
 
+        sortingAlgorithms.add(new Algorithm("Shell", () -> {
+            start();
+            Arrays.asList(301, 132, 57, 23, 10, 4, 1).forEach(interval -> {
+                int current, contender, currentIndex;
+                for (int i = interval; i < data.getSize(); i++) {
+                    currentIndex = i;
+                    current = scan(i);
+                    for (int j = i - interval; j >= 0; j -= interval) {
+                        contender = scan(j);
+                        if (current < contender) {
+                            swap(currentIndex, j);
+                            currentIndex = j;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            });
+            finish();
+        }));
+
         sortingAlgorithms.add(new Algorithm("Quick", new Runnable() {
 
             @Override
             public void run() {
                 start();
                 quickBox(0, data.getSize() - 1);
-                done();
+                finish();
             }
 
             private void quickBox(int first, int last) {
@@ -227,8 +245,8 @@ public final class Magic {
             }
 
             private synchronized void terminate() {
-                if (initialThreadCount == Thread.activeCount()) {
-                    done();
+                if (initialThreadCount == Thread.activeCount() + 1) {
+                    finish();
                 }
             }
 
@@ -252,7 +270,7 @@ public final class Magic {
         sortable.startTimer();
     }
 
-    private void done() {
+    private void finish() {
         sortable.stopTimer();
         Algorithm.setBusy(false);
     }

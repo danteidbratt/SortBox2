@@ -43,7 +43,7 @@ class TimePanel extends AbstractPanel {
     }
 
     void reset() {
-        stop();
+        timer.stop();
         duration = Duration.ZERO;
         setTime(duration);
     }
