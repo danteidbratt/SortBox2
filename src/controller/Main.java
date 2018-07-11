@@ -62,12 +62,14 @@ public class Main {
         window = new Gui(speeds, resolutions, theme);
         window.setShuffleListener(e -> {
             if(!Algorithm.isBusy()) {
+                window.resetTimer();
                 window.updateBars(data.shuffleValues());
             }
         });
         window.updateBars(data.getValues());
         window.setResolutionListener(e -> {
             if(!Algorithm.isBusy()) {
+                window.resetTimer();
                 data.loadValues(window.getResolution());
                 window.updateBars(data.getValues());
             }

@@ -20,7 +20,9 @@ public final class Magic {
 
     public List<Algorithm> loadAlgorithms() {
         List<Algorithm> sortingAlgorithms = new ArrayList<>();
+
         sortingAlgorithms.add(new Algorithm("Insertion", () -> {
+            start();
             int current;
             for (int i = 1; i < data.getSize(); i++) {
                 current = scan(i);
@@ -36,6 +38,7 @@ public final class Magic {
         }));
 
         sortingAlgorithms.add(new Algorithm("Bubble", () -> {
+            start();
             boolean ordered = false;
             int round = 0;
             int current;
@@ -56,6 +59,7 @@ public final class Magic {
         }));
 
         sortingAlgorithms.add(new Algorithm("Sliding", () -> {
+            start();
             boolean ordered = false;
             while (!ordered) {
                 ordered = true;
@@ -76,6 +80,7 @@ public final class Magic {
         }));
 
         sortingAlgorithms.add(new Algorithm("Shaker", () -> {
+            start();
             int bottomWall = 0;
             int topWall = data.getSize() - 1;
             boolean grabbed = true;
@@ -126,6 +131,7 @@ public final class Magic {
         sortingAlgorithms.add(new Algorithm("Shell", new Runnable() {
             @Override
             public void run() {
+                start();
                 Arrays.asList(5, 2, 1).forEach(this::generateIndexList);
                 done();
             }
@@ -164,6 +170,7 @@ public final class Magic {
 
             @Override
             public void run() {
+                start();
                 quickBox(0, data.getSize() - 1);
                 done();
             }
@@ -192,6 +199,7 @@ public final class Magic {
 
             @Override
             public void run() {
+                start();
                 initialThreadCount = Thread.activeCount();
                 quickBox(0, data.getSize() - 1);
             }
@@ -229,6 +237,7 @@ public final class Magic {
         return sortingAlgorithms;
     }
 
+
     private synchronized void swap(int first, int second) {
         data.swapValues(first, second);
         sortable.swapPair(data.getValues(), first, second);
@@ -239,7 +248,12 @@ public final class Magic {
         return data.getValues()[index];
     }
 
+    private void start() {
+        sortable.startTimer();
+    }
+
     private void done() {
+        sortable.stopTimer();
         Algorithm.setBusy(false);
     }
 

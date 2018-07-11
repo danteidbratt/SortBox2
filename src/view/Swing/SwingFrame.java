@@ -15,6 +15,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public final class SwingFrame implements view.Window {
 
     private JFrame frame;
+    private TimePanel timePanel;
     private JPanel mainPanel;
     private BarPanel barPanel;
     private Dashboard dashboard;
@@ -34,7 +35,8 @@ public final class SwingFrame implements view.Window {
         mainPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 20));
         frame.add(mainPanel);
 
-        LogoPanel logoPanel = new LogoPanel();
+        timePanel = new TimePanel();
+        LogoPanel logoPanel = new LogoPanel(timePanel);
         mainPanel.add(logoPanel, NORTH);
 
         barPanel = new BarPanel();
@@ -93,12 +95,17 @@ public final class SwingFrame implements view.Window {
 
     @Override
     public void startTimer() {
-
+        timePanel.start();
     }
 
     @Override
     public void stopTimer() {
+        timePanel.stop();
+    }
 
+    @Override
+    public void resetTimer() {
+        timePanel.reset();
     }
 
 }

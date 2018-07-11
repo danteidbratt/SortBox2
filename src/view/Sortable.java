@@ -10,4 +10,6 @@ public interface Sortable {
 
     void stopTimer();
 
+    void resetTimer();
+
 }

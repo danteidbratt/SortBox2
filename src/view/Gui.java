@@ -60,4 +60,9 @@ public final class Gui implements Window {
     public void stopTimer() {
         frame.stopTimer();
     }
+
+    @Override
+    public void resetTimer() {
+        frame.resetTimer();
+    }
 }

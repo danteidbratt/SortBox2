@@ -3,18 +3,21 @@ package view.Swing;
 import javax.swing.*;
 import java.awt.*;
 
+import static java.awt.BorderLayout.*;
+
 final class LogoPanel extends AbstractPanel {
 
-    LogoPanel() {
-        setLayout(new GridLayout(1, 1));
+    LogoPanel(TimePanel timePanel) {
+        setLayout(new BorderLayout());
         setPreferredSize(new Dimension(0, 100));
-        setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 0));
         setBackground(theme.getBackgroundColor());
         JLabel logo = new JLabel("SortBox");
         logo.setFont(new Font("SansSerif", Font.PLAIN, 50));
         logo.setForeground(theme.getLogoColor());
         logo.setHorizontalAlignment(SwingConstants.LEFT);
-        add(logo);
+        add(logo, WEST);
+        add(timePanel, EAST);
     }
 
 }
