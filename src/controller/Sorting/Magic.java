@@ -4,6 +4,7 @@ import model.Retreivable;
 import view.Sortable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public final class Magic {
@@ -20,10 +21,13 @@ public final class Magic {
     public List<Algorithm> loadAlgorithms() {
         List<Algorithm> sortingAlgorithms = new ArrayList<>();
         sortingAlgorithms.add(new Algorithm("Insertion", () -> {
-            for (int i = 0; i < data.getSize() - 1; i++) {
-                for (int j = i; j < data.getSize(); j++) {
-                    if (scan(j) == i) {
-                        swap(i, j);
+            int current;
+            for (int i = 1; i < data.getSize(); i++) {
+                current = scan(i);
+                for (int j = i; j > 0; j--) {
+                    if (scan(j - 1) > current) {
+                        swap(j - 1, j);
+                    } else {
                         break;
                     }
                 }
@@ -119,6 +123,43 @@ public final class Magic {
             done();
         }));
 
+        sortingAlgorithms.add(new Algorithm("Shell", new Runnable() {
+            @Override
+            public void run() {
+                Arrays.asList(5, 2, 1).forEach(this::generateIndexList);
+                done();
+            }
+
+            private void generateIndexList(int interval) {
+                int[] temp;
+                int tempLength;
+                for (int i = 0; i < interval; i++) {
+                    tempLength = ((data.getSize() - i) / interval);
+                    temp = new int[tempLength];
+                    for (int j = 0; j < tempLength; j++) {
+                        temp[j] = i + (interval * j);
+                    }
+                    if (temp.length > 1) {
+                        sortByIndexList(temp);
+                    }
+                }
+            }
+
+            private void sortByIndexList(int[] temp) {
+                int current;
+                for (int i = 1; i < temp.length; i++) {
+                    current = scan(temp[i]);
+                    for (int j = i; j > 0; j--) {
+                        if (scan(temp[j - 1]) > current) {
+                            swap(temp[j - 1], temp[j]);
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            }
+        }));
+
         sortingAlgorithms.add(new Algorithm("Quick", new Runnable() {
 
             @Override
@@ -178,7 +219,7 @@ public final class Magic {
             }
 
             private synchronized void terminate() {
-                if(initialThreadCount == Thread.activeCount()) {
+                if (initialThreadCount == Thread.activeCount()) {
                     done();
                 }
             }
