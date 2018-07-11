@@ -34,7 +34,7 @@ public class Main {
 
     private void loadSettings() {
         speeds = Arrays.asList(
-                new Speed("Low", 100),
+                new Speed("Low", 300),
                 new Speed("Mid", 10),
                 new Speed("High", 1),
                 new Speed("Unlimited", 0)
@@ -60,7 +60,11 @@ public class Main {
 
     private void loadView() {
         window = new Gui(speeds, resolutions, theme);
-        window.setShuffleListener(e -> window.updateBars(data.shuffleValues()));
+        window.setShuffleListener(e -> {
+            if(!Algorithm.isBusy()) {
+                window.updateBars(data.shuffleValues());
+            }
+        });
         window.updateBars(data.getValues());
         window.setResolutionListener(e -> {
             if(!Algorithm.isBusy()) {
