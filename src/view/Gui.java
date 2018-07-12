@@ -12,8 +12,8 @@ public final class Gui implements Window {
 
     private Window frame;
 
-    public Gui(List<Setting> speeds, List<Setting> resolutions, Theme theme) {
-        frame = new SwingFrame(speeds, resolutions, theme);
+    public Gui(List<Setting> shuffleTypes, List<Setting> speeds, List<Setting> resolutions, List<Setting> increments, Theme theme) {
+        frame = new SwingFrame(shuffleTypes, speeds, resolutions, increments, theme);
     }
 
     @Override
@@ -27,6 +27,16 @@ public final class Gui implements Window {
     }
 
     @Override
+    public int getShuffleType() {
+        return frame.getShuffleType();
+    }
+
+    @Override
+    public int getIncrements() {
+        return frame.getIncrements();
+    }
+
+    @Override
     public void setResolutionListener(ActionListener actionListener) {
         frame.setResolutionListener(actionListener);
     }
@@ -34,6 +44,11 @@ public final class Gui implements Window {
     @Override
     public void setShuffleListener(ActionListener actionListener) {
         frame.setShuffleListener(actionListener);
+    }
+
+    @Override
+    public void setIncrementListener(ActionListener actionListener) {
+        frame.setIncrementListener(actionListener);
     }
 
     @Override

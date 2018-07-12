@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public final class Magic {
+public final class Controller {
 
     private int initialThreadCount;
     private Sortable sortable;
     private final Retreivable data;
 
-    public Magic(Sortable sortable, Retreivable data) {
+    public Controller(Sortable sortable, Retreivable data) {
         this.sortable = sortable;
         this.data = data;
     }
@@ -21,11 +21,11 @@ public final class Magic {
     public List<Algorithm> loadAlgorithms() {
         List<Algorithm> sortingAlgorithms = new ArrayList<>();
 
-        sortingAlgorithms.add(new Algorithm("Sliding", () -> {
+        sortingAlgorithms.add(new Algorithm("Slide", () -> {
             start();
             boolean messy = true;
             boolean even = true;
-            while (messy) {
+            while (messy || data.isShuffled()) {
                 messy = false;
                 for (int i = even ? 0 : 1; i < data.getSize() - 1; i += 2) {
                     if (scan(i) > scan(i + 1)) {
@@ -61,7 +61,7 @@ public final class Magic {
             finish();
         }));
 
-        sortingAlgorithms.add(new Algorithm("Shaker", () -> {
+        sortingAlgorithms.add(new Algorithm("Shake", () -> {
             start();
             int bottomWall = 0;
             int topWall = data.getSize() - 1;
@@ -78,9 +78,7 @@ public final class Magic {
                     }
                     if (current > contender) {
                         swap(i, i + 1);
-                        if (!grabbed) {
-                            grabbed = true;
-                        }
+                        grabbed = true;
                     } else {
                         current = contender;
                     }
@@ -98,9 +96,7 @@ public final class Magic {
                     }
                     if (current < contender) {
                         swap(i, i - 1);
-                        if (!grabbed) {
-                            grabbed = true;
-                        }
+                        grabbed = true;
                     } else {
                         current = contender;
                     }
@@ -110,7 +106,7 @@ public final class Magic {
             finish();
         }));
 
-        sortingAlgorithms.add(new Algorithm("Insertion", () -> {
+        sortingAlgorithms.add(new Algorithm("Insert", () -> {
             start();
             int current;
             for (int i = 1; i < data.getSize(); i++) {
@@ -213,7 +209,7 @@ public final class Magic {
             }
         }));
 
-        sortingAlgorithms.add(new Algorithm("MultiQuick", new Runnable() {
+        sortingAlgorithms.add(new Algorithm("Beast", new Runnable() {
 
             @Override
             public void run() {

@@ -3,7 +3,8 @@ package view.Swing;
 import javax.swing.*;
 import java.awt.*;
 
-import static java.awt.BorderLayout.*;
+import static java.awt.BorderLayout.EAST;
+import static java.awt.BorderLayout.WEST;
 
 final class LogoPanel extends AbstractPanel {
 

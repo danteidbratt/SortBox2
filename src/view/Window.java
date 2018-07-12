@@ -11,9 +11,15 @@ public interface Window extends Sortable {
 
     int getResolution();
 
+    int getShuffleType();
+
+    int getIncrements();
+
     void setResolutionListener(ActionListener actionListener);
 
     void setShuffleListener(ActionListener actionListener);
+
+    void setIncrementListener(ActionListener actionListener);
 
     void setAlgorithms(List<Algorithm> algorithms);
 

@@ -2,11 +2,17 @@ package model;
 
 public interface Retreivable {
 
-    void loadValues(int numberOfValues);
-
     int[] getValues();
 
-    int[] shuffleValues();
+    int[] orderSlope(int numberOfValues);
+
+    int[] orderStairs(int numberOfValues);
+
+    int[] shuffleOrder();
+
+    int[] reverseOrder();
+
+    int[] missplaceOne();
 
     void swapValues(int first, int second);
 

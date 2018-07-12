@@ -20,7 +20,7 @@ public final class SwingFrame implements view.Window {
     private BarPanel barPanel;
     private Dashboard dashboard;
 
-    public SwingFrame(List<Setting> speeds, List<Setting> resolutions, Theme theme) {
+    public SwingFrame(List<Setting> shuffleTypes, List<Setting> speeds, List<Setting> resolutions, List<Setting> increments, Theme theme) {
         setTheme(theme);
         setSpeed(speeds.get(0));
         frame = new JFrame();
@@ -42,7 +42,7 @@ public final class SwingFrame implements view.Window {
         barPanel = new BarPanel();
         mainPanel.add(barPanel, CENTER);
 
-        dashboard = new Dashboard(resolutions, speeds, e -> Bar.setScanningDuration(dashboard.getSpeed()));
+        dashboard = new Dashboard(shuffleTypes, resolutions, speeds, increments, e -> Bar.setScanningDuration(dashboard.getSpeed()));
         mainPanel.add(dashboard, SOUTH);
         frame.pack();
     }
@@ -66,6 +66,16 @@ public final class SwingFrame implements view.Window {
     }
 
     @Override
+    public int getShuffleType() {
+        return dashboard.getShuffleType();
+    }
+
+    @Override
+    public int getIncrements() {
+        return dashboard.getIncrements();
+    }
+
+    @Override
     public void setResolutionListener(ActionListener resolutionListener) {
         dashboard.setResolutionListener(resolutionListener);
     }
@@ -73,6 +83,11 @@ public final class SwingFrame implements view.Window {
     @Override
     public void setShuffleListener(ActionListener shuffleListener) {
         dashboard.setShuffleListener(shuffleListener);
+    }
+
+    @Override
+    public void setIncrementListener(ActionListener actionListener) {
+        dashboard.setIncrementListener(actionListener);
     }
 
     @Override

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.time.Duration;
 
-import static javax.swing.SwingConstants.*;
+import static javax.swing.SwingConstants.RIGHT;
 
 class TimePanel extends AbstractPanel {
 
