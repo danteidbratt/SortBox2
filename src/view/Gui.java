@@ -62,8 +62,8 @@ public final class Gui implements Window {
     }
 
     @Override
-    public void swapPair(int[] data, int first, int second) {
-        frame.swapPair(data, first, second);
+    public void swapPair(int firstValue, int secondValue, int firstIndex, int secondIndex) {
+        frame.swapPair(firstValue, secondValue, firstIndex, secondIndex);
     }
 
     @Override

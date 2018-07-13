@@ -3,7 +3,7 @@ package controller;
 import controller.Sorting.Algorithm;
 import controller.Sorting.Controller;
 import model.Data;
-import model.Retreivable;
+import model.Sortable;
 import unit.*;
 import view.Gui;
 import view.Window;
@@ -16,7 +16,7 @@ import static java.awt.Font.BOLD;
 
 public class Main {
 
-    private Retreivable data;
+    private Sortable data;
     private Window window;
     private List<Setting> mixes;
     private List<Setting> speeds;
@@ -72,7 +72,7 @@ public class Main {
     private void loadView() {
         window = new Gui(mixes, speeds, resolutions, increments, theme);
         window.setShuffleListener(e -> {
-            if(!Algorithm.isBusy()) {
+            if(Algorithm.isAvailable()) {
                 window.resetTimer();
                 if(window.getShuffleType() == 0) {
                     data.shuffleOrder();
@@ -88,13 +88,13 @@ public class Main {
         });
         window.updateBars(data.getValues());
         window.setResolutionListener(e -> {
-            if(!Algorithm.isBusy()) {
+            if(Algorithm.isAvailable()) {
                 order();
                 newGame();
             }
         });
         window.setIncrementListener(e -> {
-            if(!Algorithm.isBusy()) {
+            if(Algorithm.isAvailable()) {
                 order();
                 newGame();
             }
@@ -116,6 +116,7 @@ public class Main {
 
     private void loadAlgorithms() {
         Algorithm.setData(data);
+        Algorithm.setAvailable(true);
         window.setAlgorithms(new Controller(window, data).loadAlgorithms());
     }
 

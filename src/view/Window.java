@@ -5,7 +5,7 @@ import controller.Sorting.Algorithm;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public interface Window extends Sortable {
+public interface Window extends Display {
 
     void updateBars(int[] values);
 

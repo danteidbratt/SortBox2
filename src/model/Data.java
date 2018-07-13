@@ -1,15 +1,26 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public final class Data implements Retreivable{
+public final class Data implements Sortable {
 
     private int[] values;
 
     public int[] getValues() {
         return values;
+    }
+
+    @Override
+    public int[] getValues(int from, int to) {
+        return Arrays.copyOfRange(values, from, to);
+    }
+
+    @Override
+    public int getValue(int index) {
+        return values[index];
     }
 
     @Override
@@ -77,7 +88,7 @@ public final class Data implements Retreivable{
     }
 
     @Override
-    public void insertValues(int startIndex, int[] values) {
+    public void insertSequence(int startIndex, int[] values) {
         System.arraycopy(values, 0, this.values, startIndex, values.length);
     }
 

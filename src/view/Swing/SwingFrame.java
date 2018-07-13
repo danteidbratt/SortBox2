@@ -104,8 +104,8 @@ public final class SwingFrame implements view.Window {
     }
 
     @Override
-    public void swapPair(int[] data, int first, int second) {
-        barPanel.swap(data, first, second);
+    public void swapPair(int firstValue, int secondValue, int firstIndex, int secondIndex) {
+        barPanel.swap(firstValue, secondValue, firstIndex, secondIndex);
     }
 
     @Override
