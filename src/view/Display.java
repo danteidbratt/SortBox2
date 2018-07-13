@@ -1,10 +1,10 @@
 package view;
 
-public interface Sortable {
+public interface Display {
 
     void scan(int index);
 
-    void swapPair(int[] data, int first, int second);
+    void swapPair(int firstValue, int secondValue, int firstIndex, int secondIndex);
 
     void updateSequence(int[] sequence, int first);
 

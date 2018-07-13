@@ -1,8 +1,12 @@
 package model;
 
-public interface Retreivable {
+public interface Sortable {
 
     int[] getValues();
+
+    int[] getValues(int from, int to);
+
+    int getValue(int index);
 
     int[] orderSlope(int numberOfValues);
 
@@ -16,7 +20,7 @@ public interface Retreivable {
 
     void swapValues(int first, int second);
 
-    void insertValues(int startIndex, int[] values);
+    void insertSequence(int startIndex, int[] values);
 
     int getSize();
 

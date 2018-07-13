@@ -1,18 +1,18 @@
 package controller.Sorting;
 
-import model.Retreivable;
-import view.Sortable;
+import model.Sortable;
+import view.Display;
 
 import java.util.*;
 
 public final class Controller {
 
     private int initialThreadCount;
-    private Sortable sortable;
-    private final Retreivable data;
+    private Display display;
+    private final Sortable data;
 
-    public Controller(Sortable sortable, Retreivable data) {
-        this.sortable = sortable;
+    public Controller(Display display, Sortable data) {
+        this.display = display;
         this.data = data;
     }
 
@@ -210,7 +210,7 @@ public final class Controller {
             }
 
             private synchronized Queue<Integer> merge(int startIndex, Queue<Integer> first, Queue<Integer> second) {
-                Queue<Integer> result = new LinkedList<>();
+                List<Integer> result = new LinkedList<>();
                 int temp1 = -1;
                 int temp2 = -1;
                 while (!first.isEmpty() && !second.isEmpty()) {
@@ -221,23 +221,23 @@ public final class Controller {
                         temp2 = scan(second.peek());
                     }
                     if (temp1 < temp2) {
-                        result.offer(first.poll());
+                        result.add(first.poll());
                         temp1 = -1;
                     } else {
-                        result.offer(second.poll());
+                        result.add(second.poll());
                         temp2 = -1;
                     }
                 }
 
                 while (!first.isEmpty()) {
-                    result.offer(first.poll());
+                    result.add(first.poll());
                 }
 
                 while (!second.isEmpty()) {
-                    result.offer(second.poll());
+                    result.add(second.poll());
                 }
 
-                return insert(startIndex, new LinkedList<>(result));
+                return insert(startIndex, result);
             }
 
         }));
@@ -316,7 +316,7 @@ public final class Controller {
 
     private synchronized void swap(int first, int second) {
         data.swapValues(first, second);
-        sortable.swapPair(data.getValues(), first, second);
+        display.swapPair(data.getValue(first), data.getValue(second), first, second);
     }
 
     private Queue<Integer> insert(int startIndex, List<Integer> result) {
@@ -324,24 +324,24 @@ public final class Controller {
         for (int i = 0; i < temp.length; i++) {
             temp[i] = data.getValues()[result.get(i)];
         }
-        data.insertValues(startIndex, temp);
-        sortable.updateSequence(temp, startIndex);
+        data.insertSequence(startIndex, temp);
+        display.updateSequence(data.getValues(startIndex, startIndex + temp.length), startIndex);
         Collections.sort(result);
         return new LinkedList<>(result);
     }
 
     private int scan(int index) {
-        sortable.scan(index);
+        display.scan(index);
         return data.getValues()[index];
     }
 
     private void start() {
-        sortable.startTimer();
+        display.startTimer();
     }
 
     private void finish() {
-        sortable.stopTimer();
-        Algorithm.setBusy(false);
+        display.stopTimer();
+        Algorithm.setAvailable(true);
     }
 
 }

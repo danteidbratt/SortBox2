@@ -1,13 +1,13 @@
 package controller.Sorting;
 
-import model.Retreivable;
+import model.Sortable;
 
 import java.awt.event.ActionListener;
 
 public final class Algorithm {
 
-    private static Retreivable data;
-    private static boolean busy;
+    private static Sortable data;
+    private static boolean available;
     private final String identifier;
     private final Runnable algorithm;
     private final ActionListener actionListener;
@@ -20,13 +20,13 @@ public final class Algorithm {
     }
 
     private void activate() {
-        if(data.isShuffled() && !busy) {
-            busy = true;
+        if(data.isShuffled() && available) {
+            available = false;
             new Thread(algorithm).start();
         }
     }
 
-    public static void setData(Retreivable data) {
+    public static void setData(Sortable data) {
         Algorithm.data = data;
     }
 
@@ -38,12 +38,12 @@ public final class Algorithm {
         return actionListener;
     }
 
-    static void setBusy(boolean busy) {
-        Algorithm.busy = busy;
+    public static void setAvailable(boolean available) {
+        Algorithm.available = available;
     }
 
-    public static boolean isBusy() {
-        return busy;
+    public static boolean isAvailable() {
+        return available;
     }
 
 }

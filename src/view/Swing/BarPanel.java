@@ -24,16 +24,16 @@ final class BarPanel extends AbstractPanel {
         revalidate();
     }
 
-    void updateSequence(int[] sequence, int startIndex) {
+    void updateSequence(int[] sequence, int firstIndex) {
         for (int i = 0; i < sequence.length; i++) {
-            bars[i + startIndex].setValue(sequence[i]);
+            bars[i + firstIndex].setValue(sequence[i]);
         }
         revalidate();
     }
 
-    void swap(int[] values, int first, int second) {
-        bars[first].setValue(values[first]);
-        bars[second].setValue(values[second]);
+    void swap(int firstValue, int secondValue, int first, int second) {
+        bars[first].setValue(firstValue);
+        bars[second].setValue(secondValue);
         revalidate();
     }
 
