@@ -11,7 +11,7 @@ final class BarPanel extends AbstractPanel {
         setPreferredSize(new Dimension(1024, 512));
     }
 
-    void update(int[] values) {
+    void updateAll(int[] values) {
         removeAll();
         Bar.setResolution(values.length);
         bars = new Bar[values.length];
@@ -20,6 +20,13 @@ final class BarPanel extends AbstractPanel {
             bars[i] = new Bar();
             bars[i].setValue(values[i]);
             add(bars[i]);
+        }
+        revalidate();
+    }
+
+    void updateSequence(int[] sequence, int startIndex) {
+        for (int i = 0; i < sequence.length; i++) {
+            bars[i + startIndex].setValue(sequence[i]);
         }
         revalidate();
     }

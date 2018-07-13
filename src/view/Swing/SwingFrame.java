@@ -57,7 +57,7 @@ public final class SwingFrame implements view.Window {
 
     @Override
     public void updateBars(int[] values) {
-        barPanel.update(values);
+        barPanel.updateAll(values);
     }
 
     @Override
@@ -106,6 +106,11 @@ public final class SwingFrame implements view.Window {
     @Override
     public void swapPair(int[] data, int first, int second) {
         barPanel.swap(data, first, second);
+    }
+
+    @Override
+    public void updateSequence(int[] sequence, int first) {
+        barPanel.updateSequence(sequence, first);
     }
 
     @Override

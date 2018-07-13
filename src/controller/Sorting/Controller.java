@@ -3,9 +3,7 @@ package controller.Sorting;
 import model.Retreivable;
 import view.Sortable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public final class Controller {
 
@@ -73,9 +71,9 @@ public final class Controller {
                 grabbed = false;
                 for (int i = bottomWall; i < topWall; i++) {
                     contender = scan(i + 1);
-                    if (!grabbed && current == i) {
-                        bottomWall = i;
-                    }
+//                    if (!grabbed && current == i) {
+//                        bottomWall = i;
+//                    }
                     if (current > contender) {
                         swap(i, i + 1);
                         grabbed = true;
@@ -91,9 +89,9 @@ public final class Controller {
                 current = contender;
                 for (int i = topWall; i > bottomWall; i--) {
                     contender = scan(i - 1);
-                    if (!grabbed && current == i) {
-                        topWall = i;
-                    }
+//                    if (!grabbed && current == i) {
+//                        topWall = i;
+//                    }
                     if (current < contender) {
                         swap(i, i - 1);
                         grabbed = true;
@@ -180,6 +178,70 @@ public final class Controller {
             finish();
         }));
 
+        sortingAlgorithms.add(new Algorithm("Merge", new Runnable() {
+
+            @Override
+            public void run() {
+                start();
+                Queue<Integer> indexes = new LinkedList<>();
+                for (int i = 0; i < data.getValues().length; i++) {
+                    indexes.offer(i);
+                }
+                mergeSort(0, indexes);
+                finish();
+            }
+
+            private Queue<Integer> mergeSort(int startIndex, Queue<Integer> input) {
+                if (input.size() == 1) {
+                    return input;
+                }
+                int length = input.size() / 2;
+                Queue<Integer> first = new LinkedList<>();
+                Queue<Integer> second = new LinkedList<>();
+
+                for (int i = 0; i < length; i++) {
+                    first.offer(input.poll());
+                }
+                for (int i = 0; i < length; i++) {
+                    second.offer(input.poll());
+                }
+
+                return merge(startIndex, mergeSort(startIndex, first), mergeSort(startIndex + length, second));
+            }
+
+            private synchronized Queue<Integer> merge(int startIndex, Queue<Integer> first, Queue<Integer> second) {
+                Queue<Integer> result = new LinkedList<>();
+                int temp1 = -1;
+                int temp2 = -1;
+                while (!first.isEmpty() && !second.isEmpty()) {
+                    if (temp1 < 0) {
+                        temp1 = scan(first.peek());
+                    }
+                    if (temp2 < 0) {
+                        temp2 = scan(second.peek());
+                    }
+                    if (temp1 < temp2) {
+                        result.offer(first.poll());
+                        temp1 = -1;
+                    } else {
+                        result.offer(second.poll());
+                        temp2 = -1;
+                    }
+                }
+
+                while (!first.isEmpty()) {
+                    result.offer(first.poll());
+                }
+
+                while (!second.isEmpty()) {
+                    result.offer(second.poll());
+                }
+
+                return insert(startIndex, new LinkedList<>(result));
+            }
+
+        }));
+
         sortingAlgorithms.add(new Algorithm("Quick", new Runnable() {
 
             @Override
@@ -255,6 +317,17 @@ public final class Controller {
     private synchronized void swap(int first, int second) {
         data.swapValues(first, second);
         sortable.swapPair(data.getValues(), first, second);
+    }
+
+    private Queue<Integer> insert(int startIndex, List<Integer> result) {
+        int[] temp = new int[result.size()];
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = data.getValues()[result.get(i)];
+        }
+        data.insertValues(startIndex, temp);
+        sortable.updateSequence(temp, startIndex);
+        Collections.sort(result);
+        return new LinkedList<>(result);
     }
 
     private int scan(int index) {

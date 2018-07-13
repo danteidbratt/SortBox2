@@ -39,7 +39,7 @@ public class Main {
         );
 
         speeds = Arrays.asList(
-                new Speed("Low", 200),
+                new Speed("Low", 300),
                 new Speed("Medium", 50),
                 new Speed("High", 7),
                 new Speed("Very High", 1),

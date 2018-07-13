@@ -1,26 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f57af01e-5eb1-4b5f-be32-48bc1f09dfaa" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/unit/Increment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unit/ShuffleType.java" afterDir="false" />
+    <list default="true" id="f57af01e-5eb1-4b5f-be32-48bc1f09dfaa" name="Default" comment="MergeSort added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SortBox2/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SortBox2/controller/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SortBox2/model/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SortBox2/model/Data.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SortBox2/model/Retreivable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SortBox2/model/Retreivable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SortBox2/view/Gui.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SortBox2/view/Gui.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SortBox2/view/Swing/SwingFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SortBox2/view/Swing/SwingFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SortBox2/view/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SortBox2/view/Window.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Sorting/Magic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Sorting/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Sorting/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Sorting/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Data.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Retreivable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Retreivable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Gui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Swing/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Swing/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Swing/LogoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Swing/LogoPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/Sortable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Sortable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/Swing/BarPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Swing/BarPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/Swing/SwingFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Swing/SwingFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Swing/TimePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Swing/TimePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Window.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,14 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/Sorting/Controller.java">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="221">
+              <caret line="49" column="45" lean-forward="true" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -47,8 +35,8 @@
       <file leaf-file-name="SwingFrame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/Swing/SwingFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+            <state relative-caret-position="115">
+              <caret line="112" column="49" selection-start-line="112" selection-start-column="49" selection-end-line="112" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -56,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dashboard.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/Swing/Dashboard.java">
+      <file leaf-file-name="BarPanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/Swing/BarPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1309">
-              <caret line="86" column="29" lean-forward="true" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
+            <state relative-caret-position="323">
+              <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -68,33 +56,34 @@
       <file leaf-file-name="Gui.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/Gui.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+            <state relative-caret-position="833">
+              <caret line="70" column="39" selection-start-line="70" selection-start-column="39" selection-end-line="70" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#781#782#0" expanded="true" />
-                <element signature="e#825#826#0" expanded="true" />
-                <element signature="e#1194#1195#0" expanded="true" />
-                <element signature="e#1252#1253#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controller/Main.java">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/controller/Sorting/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="36" column="46" lean-forward="true" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
+            <state relative-caret-position="262">
+              <caret line="219" column="36" lean-forward="true" selection-start-line="219" selection-start-column="36" selection-end-line="219" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#11874#11875#0" expanded="true" />
+                <element signature="e#11911#11912#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Retreivable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Retreivable.java">
+      <file leaf-file-name="Sortable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/Sortable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+            <state>
+              <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -102,8 +91,8 @@
       <file leaf-file-name="Data.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Data.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="64" column="33" lean-forward="true" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+            <state relative-caret-position="279">
+              <caret line="80" column="66" selection-start-line="80" selection-start-column="66" selection-end-line="80" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -150,22 +139,23 @@
         <option value="$PROJECT_DIR$/src/view/Swing/ButtonPanel.java" />
         <option value="$PROJECT_DIR$/src/unit/Theme.java" />
         <option value="$PROJECT_DIR$/src/view/Swing/SortingButton.java" />
-        <option value="$PROJECT_DIR$/src/view/Swing/BarPanel.java" />
         <option value="$PROJECT_DIR$/src/controller/Sorting/SortingAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/view/Sortable.java" />
         <option value="$PROJECT_DIR$/src/controller/Sorting/Algorithm.java" />
         <option value="$PROJECT_DIR$/src/view/Swing/TimePanel.java" />
         <option value="$PROJECT_DIR$/src/view/Swing/LogoPanel.java" />
         <option value="$PROJECT_DIR$/src/unit/Mix.java" />
         <option value="$PROJECT_DIR$/src/unit/Increment.java" />
         <option value="$PROJECT_DIR$/src/view/Window.java" />
-        <option value="$PROJECT_DIR$/src/model/Retreivable.java" />
-        <option value="$PROJECT_DIR$/src/model/Data.java" />
-        <option value="$PROJECT_DIR$/src/controller/Main.java" />
         <option value="$PROJECT_DIR$/src/controller/Sorting/Magic.java" />
         <option value="$PROJECT_DIR$/src/view/Swing/Dashboard.java" />
+        <option value="$PROJECT_DIR$/src/controller/Sorting/Pair.java" />
+        <option value="$PROJECT_DIR$/src/model/Retreivable.java" />
         <option value="$PROJECT_DIR$/src/view/Gui.java" />
+        <option value="$PROJECT_DIR$/src/view/Sortable.java" />
         <option value="$PROJECT_DIR$/src/view/Swing/SwingFrame.java" />
+        <option value="$PROJECT_DIR$/src/view/Swing/BarPanel.java" />
+        <option value="$PROJECT_DIR$/src/controller/Main.java" />
+        <option value="$PROJECT_DIR$/src/model/Data.java" />
         <option value="$PROJECT_DIR$/src/controller/Sorting/Controller.java" />
       </list>
     </option>
@@ -381,11 +371,19 @@
       <option name="project" value="LOCAL" />
       <updated>1531322744439</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="ShuffleType and Increment added">
+      <created>1531407803853</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1531407803854</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="720" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -395,7 +393,7 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33133432" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35532233" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3298351" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="6" />
@@ -497,16 +495,11 @@
     <MESSAGE value="Merge branch 'feature1'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <MESSAGE value="Shellsort added" />
     <MESSAGE value="Timer added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Timer added" />
+    <MESSAGE value="ShuffleType and Increment added" />
+    <MESSAGE value="MergeSort added" />
+    <option name="LAST_COMMIT_MESSAGE" value="MergeSort added" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/jre/lib/rt.jar!/java/util/List.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/unit/Theme.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -612,9 +605,6 @@
           <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1251#1252#0" expanded="true" />
-            <element signature="e#1285#1286#0" expanded="true" />
-            <element signature="e#1443#1444#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -717,20 +707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Swing/BarPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Sortable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/Swing/Bar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -740,7 +716,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Sorting/Algorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
+        <state relative-caret-position="357">
           <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -752,15 +728,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/Swing/LogoPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="306">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/Swing/TimePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        <state relative-caret-position="303">
+          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -792,65 +768,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Retreivable.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/Sorting/Pair.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Data.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="64" column="33" lean-forward="true" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+        <state relative-caret-position="68">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/Swing/Dashboard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="86" column="29" lean-forward="true" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
+        <state>
+          <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Swing/SwingFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/model/Retreivable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="177">
+          <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Sortable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/Gui.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+        <state relative-caret-position="833">
+          <caret line="70" column="39" selection-start-line="70" selection-start-column="39" selection-end-line="70" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#825#826#0" expanded="true" />
-            <element signature="e#1194#1195#0" expanded="true" />
-            <element signature="e#1252#1253#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/Sorting/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/view/Swing/SwingFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        <state relative-caret-position="115">
+          <caret line="112" column="49" selection-start-line="112" selection-start-column="49" selection-end-line="112" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Swing/BarPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="36" column="46" lean-forward="true" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
+        <state relative-caret-position="221">
+          <caret line="49" column="45" lean-forward="true" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="80" column="66" selection-start-line="80" selection-start-column="66" selection-end-line="80" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Sorting/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="219" column="36" lean-forward="true" selection-start-line="219" selection-start-column="36" selection-end-line="219" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#11874#11875#0" expanded="true" />
+            <element signature="e#11911#11912#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

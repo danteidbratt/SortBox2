@@ -67,6 +67,11 @@ public final class Gui implements Window {
     }
 
     @Override
+    public void updateSequence(int[] sequence, int firstIndex) {
+        frame.updateSequence(sequence, firstIndex);
+    }
+
+    @Override
     public void startTimer() {
         frame.startTimer();
     }

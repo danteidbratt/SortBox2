@@ -6,6 +6,8 @@ public interface Sortable {
 
     void swapPair(int[] data, int first, int second);
 
+    void updateSequence(int[] sequence, int first);
+
     void startTimer();
 
     void stopTimer();

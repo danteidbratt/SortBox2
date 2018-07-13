@@ -34,7 +34,7 @@ public final class Data implements Retreivable{
         int increment = values.length / 4;
         int stop = divisor * increment;
         for (int i = stop - increment; i < stop; i++) {
-            values[i] = increment * divisor;
+            values[i] = (increment * divisor - 1);
         }
     }
 
@@ -74,6 +74,11 @@ public final class Data implements Retreivable{
         int temp = values[first];
         values[first] = values[second];
         values[second] = temp;
+    }
+
+    @Override
+    public void insertValues(int startIndex, int[] values) {
+        System.arraycopy(values, 0, this.values, startIndex, values.length);
     }
 
     public int getSize() {
