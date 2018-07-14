@@ -196,6 +196,8 @@ public final class Controller {
                     return input;
                 }
                 int length = input.size() / 2;
+
+                // The order in which indexes are to be scanned
                 Queue<Integer> first = new LinkedList<>();
                 Queue<Integer> second = new LinkedList<>();
 
@@ -210,16 +212,13 @@ public final class Controller {
             }
 
             private synchronized Queue<Integer> merge(int startIndex, Queue<Integer> first, Queue<Integer> second) {
+                // Order in which scanned indexes are to be merged
                 List<Integer> result = new LinkedList<>();
                 int temp1 = -1;
                 int temp2 = -1;
                 while (!first.isEmpty() && !second.isEmpty()) {
-                    if (temp1 < 0) {
-                        temp1 = scan(first.peek());
-                    }
-                    if (temp2 < 0) {
-                        temp2 = scan(second.peek());
-                    }
+                    temp1 = temp1 == -1 ? scan(first.peek()) : temp1;
+                    temp2 = temp2 == -1 ? scan(second.peek()) : temp2;
                     if (temp1 < temp2) {
                         result.add(first.poll());
                         temp1 = -1;
@@ -240,6 +239,17 @@ public final class Controller {
                 return insert(startIndex, result);
             }
 
+            private Queue<Integer> insert(int startIndex, List<Integer> result) {
+                int[] temp = new int[result.size()];
+                for (int i = 0; i < temp.length; i++) {
+                    temp[i] = data.getValues()[result.get(i)];
+                }
+                data.insertSequence(startIndex, temp);
+                display.updateSequence(data.getValues(startIndex, startIndex + temp.length), startIndex);
+                // Sort indexes so that following recursion scans in ascending order.
+                Collections.sort(result);
+                return new LinkedList<>(result);
+            }
         }));
 
         sortingAlgorithms.add(new Algorithm("Quick", new Runnable() {
@@ -317,17 +327,6 @@ public final class Controller {
     private synchronized void swap(int first, int second) {
         data.swapValues(first, second);
         display.swapPair(data.getValue(first), data.getValue(second), first, second);
-    }
-
-    private Queue<Integer> insert(int startIndex, List<Integer> result) {
-        int[] temp = new int[result.size()];
-        for (int i = 0; i < temp.length; i++) {
-            temp[i] = data.getValues()[result.get(i)];
-        }
-        data.insertSequence(startIndex, temp);
-        display.updateSequence(data.getValues(startIndex, startIndex + temp.length), startIndex);
-        Collections.sort(result);
-        return new LinkedList<>(result);
     }
 
     private int scan(int index) {
